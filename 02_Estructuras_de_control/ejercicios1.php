@@ -12,16 +12,11 @@
      * 
      * Calcula la suma de todos los números pares del 0 al 20
      */
-
     $suma = 0;
-
-    for($i = 0; $i <= 20; $i++) {
-        if($i % 2 == 0) {   
-            $suma = $suma + $i;     # LO MISMO QUE $suma += $i;
-        }
-    }
-
-    echo "<h3>La suma de los pares de 0 a 20 es $suma</h3>";
+	for ($i = 0; $i <=20; $i++){
+		if ($i % 2 == 0) $suma += $i;
+	}
+	echo "<h3>Ejercicio 1: La suma total es $suma</h3>"
 
     ?>
 
@@ -36,39 +31,36 @@
      *
      */
 
-    $dia = date("l");
-
-    $dia = match($dia) {
-        "Monday" => "Lunes",
-        "Tuesday" => "Martes",
-        "Wednesday" => "Miércoles",
-        "Thursday" => "Jueves",
-        "Friday" => "Viernes",
-        "Saturday" => "Sábado",
-        "Sunday" => "Domingo"
-    };
-
-    $mes = date("F");
-
-    $mes = match($mes) {
-        "January" => "Enero", 
-        "February" => "Febrero",
-        "March" => "Marzo",
-        "April" => "Abril",
-        "May" => "Mayo",
-        "June" => "Junio",
-        "July" => "Julio",
-        "August" => "Agosto",
-        "September" => "Septiembre",
-        "October" => "Octubre",
-        "November" => "Noviembre",
-        "December" => "Diciembre"
-    };
-
-    $dia_n = date("j");
-    $anno = date("Y");
-
-    echo "<h3>$dia $dia_n de $mes de $anno</h3>"
+     $dia = date("l");
+     $dia = match($dia){
+         "Monday" => "Lunes",
+         "Tuesday" => "Martes",
+         "Wednesday" => "Miércoles",
+         "Thursday" => "Jueves",
+         "Friday" => "Viernes",
+         "Saturday" => "Sábado",
+         "Sunday" => "Domingo"
+     };
+     
+     $numero = date("j");
+     
+     $mes = date("F");
+     $mes = match($mes){
+         "January" => "Enero",
+         "February" => "Febrero",
+         "March" => "Marzo",
+         "April" => "Abril",
+         "May" => "Mayo", 
+         "June" => "Junio",
+         "July" => "Julio",
+         "August" => "Agosto",
+         "September" => "September",
+         "October" => "Octubre",
+         "November" => "Noviembre",
+         "December" => "Diciembre"
+     };
+     $anio = date("Y");
+     echo "<h3>Ejercicio 2: $dia $numero de $mes de $anio</h3>"
     ?>
 
     <?php
@@ -78,39 +70,25 @@
      * UN NÚMERO ES PRIMO CUANDO SUS ÚNICOS DIVISORES SON 1 Y ÉL MISMO
      */
 
-    $num = 8;
-    $esPrimo = TRUE;
-
-    for($i = 2; $i < $num; $i++) {
-        if($num % $i == 0) {
-            $esPrimo = FALSE;
-            break;
-        }
-    }
-
-    if($esPrimo) echo "<h4>El número $num es primo<h4>";
-    else echo "<h4>El número $num no es primo<h4>";
-
-    // ----------------------------------------------------
 
     $num = 2;
+	$esPrimo = TRUE;
     $contador = 0;
-    echo "<ol>";
-    while($contador < 50) {
-        $esPrimo = TRUE;
-        for($i = 2; $i < $num; $i++) {
-            if($num % $i == 0) {
+    while ($contador <= 50){
+        for($i = 2; $i < $num && $esPrimo ; $i++){
+            if ($num % $i == 0){
                 $esPrimo = FALSE;
-                break;
             }
         }
-        if($esPrimo) {
+        if ($esPrimo){
+            echo $num;
             $contador++;
-            echo "<li>$num</li>";
         }
         $num++;
     }
-    echo "</ol>";
+	
+
+
     
 
     //  CALCULAR EL FIBONACCI DE LOS 10 PRIMEROS NÚMEROS PRIMOS
