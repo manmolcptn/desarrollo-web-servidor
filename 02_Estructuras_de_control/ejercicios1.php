@@ -82,9 +82,9 @@
         }
         if ($esPrimo){
             echo $num;
-            $contador++;
         }
         $num++;
+        $contador++;
     }
 	
 
