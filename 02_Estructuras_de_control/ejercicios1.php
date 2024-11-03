@@ -81,10 +81,11 @@
             }
         }
         if ($esPrimo){
-            echo $num;
+            echo "$num ";
+            $contador++;
         }
+        $esPrimo = TRUE;
         $num++;
-        $contador++;
     }
 	
 

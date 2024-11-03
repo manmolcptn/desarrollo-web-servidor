@@ -12,16 +12,16 @@
 </head>
 <body>
     <?php
-    $frutas = array(
+    /* $frutas = array(
         "clave 1" => "Manzana",
         'clave 2' => 'Naranja',
         'clave 3' => "Cereza"
-    );
+    ); */
 
     //echo $frutas["clave 4"];
     //echo "<br>";
 
-    $numeros1 = [1,2,3,4,5];
+    /* $numeros1 = [1,2,3,4,5];
     $numeros2 = ["1","2","3","4","5"];
 
     if($numeros1 === $numeros2) {
@@ -34,9 +34,9 @@
         "Manzana",
         "Naranja",
         "Cereza",
-    ];
+    ]; */
 
-    $frutas1 = [
+    /* $frutas1 = [
         "Cereza",
         "Naranja",
         "Manzana",
@@ -54,18 +54,18 @@
         2 => "Cereza"
     ];
 
-    if($frutas3 == $frutas2) {
-        echo "<h3>Los arrays son iguales</h3>";
+    if($frutas == $frutas3) {
+        echo "<h3>Los arrays de frutas son iguales</h3>";
     } else {
-        echo "<h3>Los arrays no son iguales</h3>";
+        echo "<h3>Los arrays de frutas no son iguales</h3>";
     }
 
     echo "<h3>Mis frutas con FOR</h3>";
     echo "<ol>";
-    for($i = 0; $i < count($frutas); $i++) {    //  3N
-        echo "<li>" . $frutas[$i] . "</li>";
-    }
-    echo "</ol>";
+	for ($i = 0; $i<count($frutas); $i++){
+		echo "<li>$frutas[$i]</li>";
+	}
+	echo "</ol>";
 
     echo "<h3>Mis frutas con WHILE</h3>";
     echo "<ol>";
@@ -74,16 +74,16 @@
         echo "<li>" . $frutas[$i] . "</li>";    //  3N
         $i++;
     }
-    echo "</ol>";
+    echo "</ol>"; */
 
-    echo "<h3>Mis frutas con FOREACH</h3>";
+   /*  echo "<h3>Mis frutas con FOREACH</h3>";
     echo "<ol>";
     foreach($frutas as $fruta) {
         echo "<li>$fruta</li>";
     }
-    echo "</ol>";
+    echo "</ol>"; */
 
-    echo "<h3>Mis frutas con FOREACH con claves</h3>";
+    /* echo "<h3>Mis frutas con FOREACH con claves</h3>";
     echo "<ol>";
     foreach($frutas as $clave => $fruta) {
         echo "<li>$clave, $fruta</li>";
@@ -92,15 +92,15 @@
 
     array_push($frutas, "Mango", "Melocotón");
     $frutas[] = "Sandía";
-    $frutas[7] = "Uva";
+    $frutas[] = "Uva";
     $frutas[] = "Melón";
 
-    //echo $frutas[1];
+    
+    
     $frutas = array_values($frutas);
-
     unset($frutas[1]);
 
-    //print_r($frutas);
+    print_r($frutas); */
 
     /*
         CREAR UN ARRAY CON UNA LISTA DE PERSONAS DONDE LA CLAVE SEA
@@ -116,32 +116,28 @@
 
         PROBAR A RESETAR LAS CLAVES
     */
-
     $personas = [
-        "11223344F" => "José Alonso",
-        "22331133G" => "Enya García",
-        "44332211R" => "Fulgencio Hermenegildo"
+        "77137925L" => "Migue",
+        "24454544D" => "Enya",
+        "23872823C" => "Jose"
     ];
 
-    $personas["99112233G"] = "Cristiano 'El bicho' Ronaldo";
-    array_push($personas, "Messi 'La pulga'");
-
-    unset($personas[0]);
-
-    echo "<ul>";
-    foreach($personas as $dni => $nombre) {
-        echo "<li>$dni, $nombre</li>";
-    }
-    echo "</ul>";
-
-    //echo "<p>" . $personas["22331133G"] . "</p>";
+    echo "<p>" . $personas["77137925L"] . "</p>";
 
     $tamano = count($personas);
     echo "<h3>$tamano</h3>";
+    //Añadir con y sin clave
+    array_push($personas, "Juan");
+    $personas["77123456D"]= "Migue";
 
+    //Eliminar elemento
+    unset($personas[0]);
 
+    foreach($personas as $persona){
+        echo "<h3>$persona</h3>";
+    }
     ?>
-    <table>
+    <!-- <table>
         <thead>
             <tr>
                 <th>DNI</th>
@@ -159,17 +155,17 @@
             ?>
         </tbody>
     </table>
-    <br><br><br><br>
-    <h1>Tabla buena</h1>
+    <br><br><br><br> -->
+    
     <?php
     $personas["00112211A"] = "Paquito de la Torre";
     $personas["22110044B"] = "Paco Fiesta";
-    //sort($personas);
-    //rsort($personas);
-    //asort($personas);
-    //arsort($personas);
-    //ksort($personas);
-    krsort($personas);
+    //sort($personas); Ordena en orden ascendente
+    //rsort($personas); Ordena en orden descendente
+    //asort($personas); Ordena en orden ascendente manteniendo la asociacion del index.
+    //arsort($personas); Ordena en orden descendente manteniendo la asociacion del index.
+    //ksort($personas); Ordena el array por sus claves en orden ascendente.
+    krsort($personas);  //Ordena el array por sus claves en orden descendente.
     ?>
     <table>
         <thead>
@@ -180,10 +176,10 @@
         </thead>
         <tbody>
             <?php
-            foreach($personas as $dni => $nombre) { ?>
+            foreach ($personas as $dni => $persona){ ?>
                 <tr>
-                    <td><?php echo $dni ?></td>
-                    <td><?php echo $nombre ?></td>
+                    <td><?php echo $dni; ?></td>
+                    <td><?php echo $persona; ?></td>
                 </tr>
             <?php }
             ?>
@@ -208,73 +204,72 @@
                 ALFABETICO INVERSO
     -->
     <?php
-    $asignaturas = array(
+    $profesores = [
         "Desarrollo web servidor" => "Alejandra",
         "Desarrollo web cliente" => "Jaime",
         "Diseño de interfaces" => "José",
         "Despliegue de aplicaciones web" => "Alejandro",
         "Empresa e inciativa emprendedora" => "Gloria",
-        "Inglés" => "Virginia",
-    );
+        "Inglés" => "Virginia"
+    ]
     ?>
-    <br><br>
-    <table>
-        <thead>
-            <tr>
-                <th>Asignatura</th>
-                <th>Docente</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            foreach($asignaturas as $asignatura => $docente) {
-                echo "<tr>";
-                echo "<td>$asignatura</td>";
-                echo "<td>$docente</td>";
-                echo "</tr>";
-            }
-            ?>
-        </tbody>
-    </table>
-
     <br><br><br>
-
     <table>
-        <caption>Ordenada por asignatura alfabéticamente</caption>
+        <caption>Tabla normal </caption>
         <thead>
             <tr>
                 <th>Asignatura</th>
-                <th>Docente</th>
+                <th>Profesor</th>
             </tr>
         </thead>
         <tbody>
-            <?php
-            ksort($asignaturas);
-            foreach($asignaturas as $asignatura => $docente) { ?>
+            <?php 
+            foreach ($profesores as $asignatura => $profesor){ ?>
                 <tr>
-                    <td><?php echo $asignatura ?></td>
-                    <td><?php echo $docente ?></td>
+                    <td><?php echo "$asignatura"?></td>
+                    <td><?php echo "$profesor"?></td>
                 </tr>
             <?php }
             ?>
         </tbody>
     </table>
-
+    <br><br><br>
     <table>
-        <caption>Ordenada por docente alfabéticamente inverso</caption>
+        <caption>Tabla por asignaturas en orden alfabetico </caption>
         <thead>
             <tr>
                 <th>Asignatura</th>
-                <th>Docente</th>
+                <th>Profesor</th>
             </tr>
         </thead>
         <tbody>
-            <?php
-            arsort($asignaturas);
-            foreach($asignaturas as $asignatura => $docente) { ?>
+            <?php 
+            ksort($profesores);
+            foreach ($profesores as $asignatura => $profesor){ ?>
                 <tr>
-                    <td><?php echo $asignatura ?></td>
-                    <td><?php echo $docente ?></td>
+                    <td><?php echo "$asignatura"?></td>
+                    <td><?php echo "$profesor"?></td>
+                </tr>
+            <?php }
+            ?>
+        </tbody>
+    </table>
+    <br><br><br>
+    <table>
+        <caption>Tabla por profesores en orden alfabetico inverso</caption>
+        <thead>
+            <tr>
+                <th>Asignatura</th>
+                <th>Profesor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+            arsort($profesores);
+            foreach ($profesores as $asignatura => $profesor){ ?>
+                <tr>
+                    <td><?php echo "$asignatura"?></td>
+                    <td><?php echo "$profesor"?></td>
                 </tr>
             <?php }
             ?>
@@ -313,32 +308,7 @@
     ];
     ?>
     <table>
-        <caption>Estudiantes</caption>
-        <thead>
-            <tr>
-                <th>Estudiante</th>
-                <th>Nota</th>
-                <th>Calificación</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            asort($estudiantes);
-            krsort($estudiantes);
-            foreach($estudiantes as $estudiante => $nota) { ?>
-                <?php 
-                if($nota < 5) echo "<tr class='suspenso'>"; 
-                if($nota >= 5) echo "<tr class='aprobado'>"; 
-                ?>
-                    <td><?php echo $estudiante ?></td>
-                    <td><?php echo $nota ?></td>
-                    <?php
-                    if($nota < 5) echo "<td>Suspenso</td>";
-                    if($nota >= 5) echo "<td>Aprobado</td>"; 
-                    ?>
-                </tr>
-            <?php } ?>
-        </tbody>
+        
     </table>
 </body>
 </html>

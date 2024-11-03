@@ -35,15 +35,14 @@
         CON WHILE Y LAS ESTRUCTURAS DE CONTROL NECESARIAS, MUESTRA EN UNA
         LISTA SIN ORDENAR TODOS LOS MÚLTIPLOS DE 3 ENTRE 1 Y 30
     */
-
     $i = 1;
     echo "<ul>";
-    while($i <= 30):
-        if($i % 3 == 0):
+    while ($i<=30){
+        if ($i%3 == 0){
             echo "<li>$i</li>";
-        endif;
+        }
         $i++;
-    endwhile;
+    }
     echo "</ul>";
     ?>
 

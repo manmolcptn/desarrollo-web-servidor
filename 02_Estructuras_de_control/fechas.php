@@ -9,7 +9,7 @@
     <?php
     //echo date("j");
     $dia = date("j");
-
+    echo $dia;
     //  HACER EL MARTES EL EJERCICIO DE LAS FECHAS
 
     //  $numero % 4
