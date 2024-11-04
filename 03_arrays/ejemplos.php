@@ -296,7 +296,7 @@
 
 
     -->
-
+    <br>
     <?php
     $estudiantes = [
         "Guillermo" => 3,   
@@ -308,7 +308,34 @@
     ];
     ?>
     <table>
-        
+        <caption>Tabla de alumnos</caption>
+        <thead>
+            <th>Alumnos</th>
+            <th>Notas</th>
+            <th>Calificación</th>
+        </thead>
+        <tbody>
+        <?php
+            foreach ($estudiantes as $estudiante => $nota){ ?>
+                <tr bgcolor="<?php if($nota < 5 ) echo "red"; else echo "green"?>">
+                    <td><?php echo $estudiante?></td>
+                    <td><?php echo $nota?></td>
+                    <td>
+                        <?php 
+                            if ($nota < 5){
+                                echo "Suspenso";
+                            } elseif ($nota < 7){
+                                echo "Aprobado";
+                            }elseif ($nota < 9){
+                                echo "Notable";
+                            }elseif($nota <=10){
+                                echo "Sobresaliente";
+                            }
+                        ?>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
     </table>
 </body>
 </html>

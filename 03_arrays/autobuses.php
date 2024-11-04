@@ -29,21 +29,14 @@
      */
 
     # Ejercicio 1
-    $nuevo_autobus = ["Málaga", "Córdoba", 120, 18];
-    array_push($autobuses, $nuevo_autobus);
-
-    array_push($autobuses, ["Málaga", "Barcelona", 885, 28]);
+    array_push($autobuses, ["Málaga", "Almería", 90, 7]);
+    array_push($autobuses, ["Torremolinos", "El Palo", 60, 4]);
 
     # Ejercicio 2
     $_duracion = array_column($autobuses, 2);
     array_multisort($_duracion, SORT_DESC, $autobuses);
 
     # Ejercicio 3 (ver tabla)
-
-    $_origen = array_column($autobuses, 0);
-    $_duracion = array_column($autobuses, 2);
-    $_precio = array_column($autobuses, 3);
-    array_multisort($_origen, SORT_ASC, $_duracion, SORT_ASC, $_precio, SORT_ASC, $autobuses);
 
     //unset($autobuses[1]);
     //unset($autobuses[5]);
@@ -57,8 +50,9 @@
      */
 
     # Ejercicio 4
-    //array_push($autobuses, ["Alhaurín de la Torre", "Málaga", 20, 5]);
-    //array_push($autobuses, ["Torremolinos", "Benalmádena", 20, 2.5]);
+    array_push($autobuses, ["Alhaurín de la Torre", "Málaga", 20, 5]);
+    array_push($autobuses, ["Torremolinos", "Benalmádena", 20, 2.5]);
+    array_push($autobuses, ["Fuengirola", "Málaga", 30, 5]);
 
     $_origen = array_column($autobuses, 0);
     $_destino = array_column($autobuses, 1);
@@ -66,12 +60,13 @@
     $_precio = array_column($autobuses, 3);
 
     # Ejercicio 5
-    //array_multisort($_origen, SORT_ASC, $_destino, SORT_ASC, $autobuses);
+    array_multisort($_origen, SORT_ASC, $_destino, SORT_ASC, $autobuses);
 
     # Ejercicio 6
-    //array_multisort($_duracion, SORT_ASC, $_precio, SORT_ASC, $autobuses);
+    array_multisort($_duracion, SORT_DESC, $_precio, SORT_DESC, $autobuses);
     ?>
     <table>
+        
         <thead>
             <tr>
                <th>Origen</th>
@@ -110,7 +105,6 @@
      * Si duracion > 30 && <= 120 ENTONCES = Media distancia
      * Si duración > 120 ENTONCES = Larga distancia
      */
-
     ?>
     <br><br><br>
     <table>

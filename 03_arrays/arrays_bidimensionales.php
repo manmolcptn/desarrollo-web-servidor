@@ -14,6 +14,7 @@
     ];
 
     foreach($videojuegos as $videojuego) {
+        //Sirve para imprimir el contenido de un array
         list($titulo, $categoria, $precio) = $videojuego;
         echo "<p>$titulo, $categoria, $precio</p>";
     }
@@ -23,14 +24,18 @@
         $nuevo_videojuego = ["Throne and Liberty", "MMO", 0];
         array_push($videojuegos, $nuevo_videojuego);
 
+        //Array_column coge una columna de un array a través de su indice
         $_titulo = array_column($videojuegos, 0);
+        //Esta columna la utilizamos para ordenar un array a través de esta en el orden que deseemos.
         array_multisort($_titulo, SORT_DESC, $videojuegos);
+
         # SORT_ASC para orden ascendiente
         # SORT_DESC para orden descendiente
 
         # Ej rapido 1: Ordenar por el precio de mas barato a mas caro
-        $_precio = array_column($videojuegos, 2);
-        array_multisort($_precio, SORT_ASC, $videojuegos);
+        /* $_precio = array_column($videojuegos, 2);
+        array_multisort($_precio, SORT_ASC, $videojuegos); */
+
         # Ej rapido 2: Ordenar por la categoria en orden alfabetico inverso
         $_categoria = array_column($videojuegos, 1);
         array_multisort($_categoria, SORT_DESC, $videojuegos);
