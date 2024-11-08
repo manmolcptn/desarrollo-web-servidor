@@ -44,7 +44,10 @@
                         echo "<td>" . $fila["nombre"] . "</td>";
                         echo "<td>" . $fila["fabricante"] . "</td>";
                         echo "<td>" . $fila["generacion"] . "</td>";
-                        echo "<td>" . $fila["unidades_vendidas"] . "</td>";
+                        /* $fila["unidades_vendidas"] === NULL ? echo "<td> No hay datos </td>" : echo "<td>" . $fila["unidades_vendidas"] . "</td>"; */
+                
+
+                        
                         echo "</tr>";
                     }
                 ?>
