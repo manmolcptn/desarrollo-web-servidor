@@ -24,11 +24,22 @@
         <input type="text" name="edad"><br><br>
         <input type="submit" value="Comprobar">
     </form>
-
+    <?php 
+    //Tipamos fuertemente la entrada y le decimos que nos devulve
+    function depurar(string $entrada) : string {
+        //htmlspecialchars Trata de forma literal el string
+        $salida = htmlspecialchars($entrada);
+        //quita los espacios en blanco
+        $salida = trim($salida);
+        //Comprueba si cumple un patron y lo reemplaza por lo que le pidamos
+        $salida = preg_replace('/\s+/', ' ', $salida);
+        return $salida;
+    }
+    ?>
     <?php
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $nombre = $_POST["nombre"];
-        $edad = $_POST["edad"];
+        $nombre = depurar($_POST["nombre"]);
+        $edad = depurar($_POST["edad"]);
 
         $resultado = match(true) {
             $edad < 18 => "es menor de edad",
@@ -36,7 +47,9 @@
             $edad >= 65 => "se ha jubilado"
         };
 
-        echo "<h1>$nombre $resultado</h1>";
+        var_dump($nombre);
+
+        echo "<p>$nombre $resultado</p>";
     }
     ?>
 </body>

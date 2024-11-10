@@ -27,7 +27,8 @@
 
     <?php
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $numero = (int)$_POST["numero"];
+        //Intval es integerValue (valor del int)
+        $numero = intval ($_POST["numero"]);
 
         for($i = 1; $i <= 10; $i++) {
             echo "<p>$numero x $i = " . $numero*$i . "</p>";

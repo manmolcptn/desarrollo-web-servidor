@@ -29,7 +29,7 @@
             if(!preg_match($patron,$tmp_dni)) {
                 $err_dni = "El DNI tiene que tener 8 dígitos y una letra";
             } else {
-                $numero_dni = (int)substr($tmp_dni,0,8);
+                $numero_dni = intval(substr($tmp_dni,0,8));
                 $letra_dni = substr($tmp_dni,8,1);
                 echo "<h1>$numero_dni $letra_dni</h1>";
 

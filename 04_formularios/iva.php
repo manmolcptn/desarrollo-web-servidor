@@ -32,6 +32,7 @@
                 }
             }
         }
+        
 
         if($tmp_iva == '') {
             $err_iva = "El tipo de IVA es obligatorio";

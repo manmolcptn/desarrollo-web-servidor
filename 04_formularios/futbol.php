@@ -40,7 +40,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Iniciales</label>
-                <textarea class="form-control" name="iniciales"></textarea>
+                <input class="form-control" name="iniciales"></input>
                 <?php 
                     if (isset($err_descripcion)) echo "<span class='error'>$err_descripcion</span>";
                 ?>

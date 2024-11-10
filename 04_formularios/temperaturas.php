@@ -37,7 +37,17 @@
                 $temperatura_final = ($temperatura * 9/5) + 32;
             }
         } elseif($unidad_inicial == "K") {
-            
+            if($unidad_final == "C") {
+                $temperatura_final = $temperatura - 273.15;
+            } elseif($unidad_final == "F") {
+                $temperatura_final = ($temperatura - 273.15) * 9/5 + 32;
+            }
+        } else{
+            if($unidad_final == "C") {
+                $temperatura_final = $temperatura - 273.15;
+            } elseif($unidad_final == "K") {
+                $temperatura_final = ($temperatura - 273.15) * 9/5 + 32;
+            }
         }
     }
     ?>
