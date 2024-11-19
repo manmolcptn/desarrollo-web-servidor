@@ -26,6 +26,8 @@
             $resultado = $_conexion -> query($sql);
             //si falla query devuelve false
         ?>
+        <a href="nueva_consola.php">Nueva consola</a>
+        <a href="nuevo_fabricante.php">Nuevo fabricante</a>
         <table class="table table-hover">
             <thead>
                 <tr>

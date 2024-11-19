@@ -13,7 +13,7 @@
         error_reporting( E_ALL );
         ini_set( "display_errors", 1 );
 
-        require('../conexion.php');
+        require('./conexion.php');
     ?>
 </head>
 <body>
@@ -26,6 +26,8 @@
             $resultado = $_conexion -> query($sql);
             //si falla query devuelve false
         ?>
+        <a href="nuevo_anime.php">Nuevo anime</a>
+        <a href="nuevo_estudio.php">Nuevo estudio</a>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -45,6 +47,7 @@
                         echo "<td>" . $fila["nombre_estudio"] . "</td>";
                         echo "<td>" . $fila["anno_estreno"] . "</td>";
                         echo "<td>" . $fila["num_temporadas"] . "</td>";
+                        echo "<td><img src=./" . $fila["imagen"]."></td>";
                         echo "</tr>";
                     }
                 ?>
