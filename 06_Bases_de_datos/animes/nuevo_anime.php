@@ -19,6 +19,17 @@
 <body>
     <div class="container">
         <?php 
+            
+            $sql = "SELECT * FROM estudios ORDER BY nombre_estudio";
+            $resultado = $_conexion -> query($sql);
+            $estudios = [];
+
+
+            while($fila = $resultado -> fetch_assoc()){
+                array_push($estudios, $fila["nombre_estudio"]);
+            }
+            /* print_r($estudios); */
+        
             if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 $titulo = $_POST["titulo"];
                 $nombre_estudio = $_POST["nombre_estudio"];
@@ -45,7 +56,15 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Estudio</label>
-                <input name="nombre_estudio" class="form-control" type="text">
+                <select class="form-select" name="nombre_estudio" id="">
+                    <?php foreach($estudios as $estudio) { ?>
+                        <option value="" selected disabled hidden>---Elige un estudio---</option>
+                        <option value="<?php echo $estudio ?>">
+                            <?php echo $estudio ?>
+                        </option>
+
+                    <?php  } ?>
+                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label">Año estreno</label>

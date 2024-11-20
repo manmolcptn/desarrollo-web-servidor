@@ -18,6 +18,7 @@
 </head>
 <body>
     <div class="container">
+        <h1>Listado de animes</h1>
         <?php 
             //creamos variable sql donde introducimos la consulta
             $sql = "SELECT * FROM animes";
@@ -26,8 +27,8 @@
             $resultado = $_conexion -> query($sql);
             //si falla query devuelve false
         ?>
-        <a href="nuevo_anime.php">Nuevo anime</a>
-        <a href="nuevo_estudio.php">Nuevo estudio</a>
+        <a class="btn btn-secondary" href="nuevo_anime.php">Nuevo anime</a>
+        <a class="btn btn-secondary" href="nuevo_estudio.php">Nuevo estudio</a>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -35,6 +36,7 @@
                     <th>Estudio</th>
                     <th>Año</th>
                     <th>Temporadas</th>
+                    <th>Imagen</th>
                 </tr>
             </thead>
             <tbody>
@@ -47,7 +49,7 @@
                         echo "<td>" . $fila["nombre_estudio"] . "</td>";
                         echo "<td>" . $fila["anno_estreno"] . "</td>";
                         echo "<td>" . $fila["num_temporadas"] . "</td>";
-                        echo "<td><img src=./" . $fila["imagen"]."></td>";
+                        echo "<td><img src=./" . $fila["imagen"]." width=150px></td>";
                         echo "</tr>";
                     }
                 ?>
