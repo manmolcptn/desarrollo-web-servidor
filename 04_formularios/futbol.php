@@ -28,6 +28,7 @@
     ?>
 </head>
 <body>
+<<<<<<< HEAD
     <?php 
         if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $tmp_equipo = $_POST["equipo"];
@@ -105,6 +106,8 @@
 
         }
     ?>
+=======
+>>>>>>> master
     <div class="container">
         <h1>Formulario de Fútbol</h1>
         <form class="col-6" method="post" action="">
@@ -112,13 +115,18 @@
                 <label class="form-label">Equipo</label>
                 <input class="form-control" type="text" name="equipo">
                 <?php 
+<<<<<<< HEAD
                     if (isset($err_equipo)) echo "<span class='error'>$err_equipo</span>";
+=======
+                    if (isset($err_titulo)) echo "<span class='error'>$err_titulo</span>";
+>>>>>>> master
                 ?>
             </div>
             <div class="mb-3">
                 <label class="form-label">Iniciales</label>
                 <input class="form-control" name="iniciales"></input>
                 <?php 
+<<<<<<< HEAD
                     if (isset($err_iniciales)) echo "<span class='error'>$err_iniciales</span>";
                 ?>
             </div>
@@ -146,6 +154,9 @@
                 <input class="form-control" name="fecha" type="date"></input>
                 <?php 
                     if (isset($err_fecha_fundacion)) echo "<span class='error'>$err_fecha_fundacion</span>";
+=======
+                    if (isset($err_descripcion)) echo "<span class='error'>$err_descripcion</span>";
+>>>>>>> master
                 ?>
             </div>
         </form>

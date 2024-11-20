@@ -13,11 +13,19 @@
         error_reporting( E_ALL );
         ini_set( "display_errors", 1 );
 
+<<<<<<< HEAD
         require('../conexion.php');
+=======
+        require('./conexion.php');
+>>>>>>> master
     ?>
 </head>
 <body>
     <div class="container">
+<<<<<<< HEAD
+=======
+        <h1>Listado de animes</h1>
+>>>>>>> master
         <?php 
             //creamos variable sql donde introducimos la consulta
             $sql = "SELECT * FROM animes";
@@ -26,6 +34,11 @@
             $resultado = $_conexion -> query($sql);
             //si falla query devuelve false
         ?>
+<<<<<<< HEAD
+=======
+        <a class="btn btn-secondary" href="nuevo_anime.php">Nuevo anime</a>
+        <a class="btn btn-secondary" href="nuevo_estudio.php">Nuevo estudio</a>
+>>>>>>> master
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -33,6 +46,10 @@
                     <th>Estudio</th>
                     <th>Año</th>
                     <th>Temporadas</th>
+<<<<<<< HEAD
+=======
+                    <th>Imagen</th>
+>>>>>>> master
                 </tr>
             </thead>
             <tbody>
@@ -45,6 +62,10 @@
                         echo "<td>" . $fila["nombre_estudio"] . "</td>";
                         echo "<td>" . $fila["anno_estreno"] . "</td>";
                         echo "<td>" . $fila["num_temporadas"] . "</td>";
+<<<<<<< HEAD
+=======
+                        echo "<td><img src=./" . $fila["imagen"]." width=150px></td>";
+>>>>>>> master
                         echo "</tr>";
                     }
                 ?>

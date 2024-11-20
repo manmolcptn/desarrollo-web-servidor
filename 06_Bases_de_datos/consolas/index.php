@@ -26,6 +26,11 @@
             $resultado = $_conexion -> query($sql);
             //si falla query devuelve false
         ?>
+<<<<<<< HEAD
+=======
+        <a href="nueva_consola.php">Nueva consola</a>
+        <a href="nuevo_fabricante.php">Nuevo fabricante</a>
+>>>>>>> master
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -44,8 +49,15 @@
                         echo "<td>" . $fila["nombre"] . "</td>";
                         echo "<td>" . $fila["fabricante"] . "</td>";
                         echo "<td>" . $fila["generacion"] . "</td>";
+<<<<<<< HEAD
                         if ($fila["unidades_vendidas"] == NULL) echo "<td>No hay datos</td>";
                         else echo "<td>" . $fila["unidades_vendidas"] . "</td>";
+=======
+                        /* $fila["unidades_vendidas"] === NULL ? echo "<td> No hay datos </td>" : echo "<td>" . $fila["unidades_vendidas"] . "</td>"; */
+                
+
+                        
+>>>>>>> master
                         echo "</tr>";
                     }
                 ?>
