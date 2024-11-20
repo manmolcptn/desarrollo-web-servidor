@@ -80,6 +80,7 @@
             </div>
             <div class="mb-3">
                 <input type="submit" class="btn btn-primary" value="Crear">
+                <a href="index.php" class="btn btn-secondary">Volver</a>
             </div>
         </form>
     </div>
