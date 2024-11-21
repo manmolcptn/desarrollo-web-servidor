@@ -24,23 +24,47 @@
             $resultado = $_conexion -> query($sql);
             $estudios = [];
 
-
+            //Introduce los nombres de los estudios en un nuevo array
             while($fila = $resultado -> fetch_assoc()){
                 array_push($estudios, $fila["nombre_estudio"]);
             }
             /* print_r($estudios); */
         
             if ($_SERVER["REQUEST_METHOD"] == "POST"){
-                $titulo = $_POST["titulo"];
-                $nombre_estudio = $_POST["nombre_estudio"];
-                $anno_estreno = $_POST["anno_estreno"];
+                $tmp_titulo = $_POST["titulo"];
+                $tmp_nombre_estudio = $_POST["nombre_estudio"];
+                $tmp_anno_estreno = $_POST["anno_estreno"];
                 $num_temporadas = $_POST["num_temporadas"];
                 //$_FILES es una matriz
                 $nombre_imagen = $_FILES["imagen"]["name"];
 
-               $direccion_temporal = $_FILES["imagen"]["tmp_name"];
-               $nombre_imagen = $_FILES["imagen"]["name"];
-               move_uploaded_file($direccion_temporal, "imagenes/$nombre_imagen");
+                if ($tmp_titulo == "") $err_titulo = "El título es obligatorio.";
+                else {
+                    if (strlen($tmp_titulo) > 80) $err_titulo = "El título puede tener como máximo 80 caractéres.";
+                    else $titulo = $tmp_titulo;
+                }
+
+                if ($tmp_nombre_estudio == "") $err_nombre_estudio = "El nombre del estudio es obligatorio.";
+                else{
+                    if (!in_array($tmp_nombre_estudio, $estudios)) $err_nombre_estudio = "Elige un estudio válido";
+                    else $nombre_estudio = $tmp_nombre_estudio;
+                }
+
+                if ($tmp_anno_estreno == "") $anno_estreno = "Desconocido";
+                else {
+                    $patron = "/^[0-9]{4}+$/";
+                    if (!preg_match($patron, $tmp_anno_estreno)) $err_anno_estreno = "Sólo se permiten 4 valores numéricos.";
+                    else {
+                        $anno_actual = date("Y");
+                        if($tmp_anno_estreno < 1960) $err_anno_estreno = "El año de estreno debe ser posterior a 1960";
+                        else if($tmp_anno_estreno > $anno_actual + 5) $err_anno_estreno = "El año de estreno no puede ser dentro de más de 5 años.";
+                        else $anno_estreno = $tmp_anno_estreno;
+                    }
+                }
+
+                $direccion_temporal = $_FILES["imagen"]["tmp_name"];
+                $nombre_imagen = $_FILES["imagen"]["name"];
+                move_uploaded_file($direccion_temporal, "imagenes/$nombre_imagen");
                 $sql = "INSERT INTO animes (titulo, nombre_estudio, anno_estreno, num_temporadas, imagen)
                         VALUES 
                         ('$titulo', '$nombre_estudio', $anno_estreno, $num_temporadas, 
@@ -53,6 +77,7 @@
             <div class="mb-3">
                 <label class="form-label">Titulo</label>
                 <input name="titulo" class="form-control" type="text">
+                <?php if(isset($err_titulo)) echo "<span class='error'>$err_titulo</span>"?>
             </div>
             <div class="mb-3">
                 <label class="form-label">Estudio</label>
@@ -64,11 +89,13 @@
                         </option>
 
                     <?php  } ?>
+                    <?php if(isset($err_nombre_estudio)) echo "<span class='error'>$err_nombre_estudio</span>"?>
                 </select>
             </div>
             <div class="mb-3">
                 <label class="form-label">Año estreno</label>
                 <input name="anno_estreno" class="form-control" type="text">
+                <?php if(isset($err_anno_estreno)) echo "<span class='error'>$err_anno_estreno</span>"?>
             </div>
             <div class="mb-3">
                 <label class="form-label">Número Temporadas</label>

@@ -20,9 +20,23 @@
     <div class="container">
         <?php 
             if ($_SERVER["REQUEST_METHOD"] == "POST"){
-                $nombre_estudio = $_POST["nombre_estudio"];
-                $ciudad = $_POST["ciudad"];
+                $tmp_nombre_estudio = $_POST["nombre_estudio"];
+                $tmp_ciudad = $_POST["ciudad"];
                 $anno_fundacion = $_POST["anno_fundacion"];
+
+                if ($tmp_nombre_estudio == "") $err_nombre_estudio = "El nombre del estudio es obligatorio.";
+                else{
+                    $patron = "/^[a-zA-Z0-9 ]+$/";
+                    if (!preg_match($patron, $tmp_nombre_estudio)) $err_nombre_estudio = "El nombre del estudio solo puede contener letras, numeros y espacios.";
+                    else $nombre_estudio = $tmp_nombre_estudio;
+                }
+
+                if($tmp_ciudad == "") $err_ciudad = "La ciudad es obligatoria.";
+                else{
+                    $patron = "/^[a-ZA-Z ]+$/";
+                    if (!preg_match($patron, $ciudad)) $err_ciudad = "La ciudad solo puede contener letras y espacios en blanco.";
+                    else $ciudad = $tmp_ciudad;
+                }
 
                 $sql = "INSERT INTO estudios (nombre_estudio, ciudad, anno_fundacion)
                         VALUES ('$nombre_estudio', '$ciudad', $anno_fundacion)";
@@ -34,10 +48,12 @@
             <div class="mb-3">
                 <label class="form-label">Estudio</label>
                 <input name="nombre_estudio" class="form-control" type="text">
+                <?php if(isset($err_nombre_estudio)) echo "<span class='error'>$err_nombre_estudio</span>"?>
             </div>
             <div class="mb-3">
                 <label class="form-label">Ciudad</label>
                 <input name="anno_estreno" class="form-control" type="text">
+                <?php if(isset($err_ciudad)) echo "<span class='error'>$err_ciudad</span>"?>
             </div>
             <div class="mb-3">
                 <label class="form-label">Año fundacion</label>
