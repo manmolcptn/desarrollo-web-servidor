@@ -14,10 +14,21 @@
         ini_set( "display_errors", 1 );
 
         require('./conexion.php');
+
+        //Para recuperar la sesion de otro fichero
+        session_start();
+        //Si no hay una sesion creada del usuario lo mando a iniciar sesión
+        if(!isset($_SESSION["usuario"])) {
+            header("location: usuario/iniciar_sesion.php");
+            exit;
+        }
+        
     ?>
 </head>
 <body>
     <div class="container">
+        <h2>Bienvenid@ <?php echo $_SESSION["usuario"] ?></h2>
+        <a href="./usuario/cerrar_sesion.php" class="btn btn-danger">Cerrar sesión</a>
         <h1>Listado de animes</h1>
         <?php 
             //creamos variable sql donde introducimos la consulta
