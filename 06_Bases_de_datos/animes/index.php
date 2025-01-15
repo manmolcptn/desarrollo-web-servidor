@@ -11,11 +11,11 @@
         
         require('conexion.php');
 
-        session_start();
+       /*  session_start();
         if(!isset($_SESSION["usuario"])) {
             header("location: usuario/iniciar_sesion.php");
             exit;
-        }
+        } */
     ?>
     <style>
         .table-primary {
@@ -26,15 +26,22 @@
 </head>
 <body>
     <div class="container">
-        <h2>Bienvenid@ <?php echo $_SESSION["usuario"] ?></h2>
+        <h2>Bienvenid@</h2>
         <a class="btn btn-danger" href="usuario/cerrar_sesion.php">Cerrar sesión</a>
         <h1>Listado de animes</h1>
         <?php
             if($_SERVER["REQUEST_METHOD"] == "POST") {
                 $id_anime = $_POST["id_anime"];
                 //echo "<h1>$id_anime</h1>";
-                $sql = "DELETE FROM animes WHERE id_anime = '$id_anime'";
-                $_conexion -> query($sql);
+
+                // Prepare
+                $sql = $_conexion -> prepare ("DELETE FROM animes WHERE id_anime = ?");
+
+                // Binding
+                $sql -> bind_param("i", $id_anime);
+
+                // Execute
+                $sql -> execute();
             }
 
             $sql = "SELECT * FROM animes";

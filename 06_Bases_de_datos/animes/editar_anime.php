@@ -22,7 +22,7 @@
                 $anno_estreno = $_POST["anno_estreno"];
                 $num_temporadas = $_POST["num_temporadas"];
 
-                #1. Prepare 
+                #1. Prepare == query()
                 $sql = $_conexion -> prepare("UPDATE animes SET 
                     titulo = ?,
                     nombre_estudio = ?, 
@@ -40,6 +40,11 @@
 
                 #3. Execute
                 $sql -> execute();
+
+                #4. Retrieve
+                $resultado = $sql -> get_result();
+
+                $anime = $resultado -> fetch_assoc();
 
                 /* $sql = "UPDATE animes SET
                             titulo = '$titulo',

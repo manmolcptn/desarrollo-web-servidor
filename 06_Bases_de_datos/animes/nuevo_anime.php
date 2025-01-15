@@ -38,7 +38,7 @@
                 move_uploaded_file($direccion_temporal, "imagenes/$nombre_imagen");
 
                 $imagen = "./imagen/$nombre_imagen";
-                #1. Prepare 
+                #1. Prepare = query()
                 $sql = $_conexion -> prepare("INSERT INTO animes 
                     (titulo, nombre_estudio, anno_estreno, num_temporadas, imagen) 
                     VALUES (?,?,?,?,?)");
