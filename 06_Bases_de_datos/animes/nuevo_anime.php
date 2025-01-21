@@ -78,7 +78,7 @@
         ?>
         <form action="" method="post" enctype="multipart/form-data">
             <div class="mb-3">
-                <label class="form-label">Título</label>
+                <lgabel class="form-label">Título</label>
                 <input class="form-control" name="titulo" type="text">
             </div>
             <div class="mb-3">

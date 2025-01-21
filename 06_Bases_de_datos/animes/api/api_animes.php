@@ -27,12 +27,20 @@
 
     function manejarGet($_conexion) {
         /* echo json_encode(["metodo" => "get"]); */
-        $sql = "SELECT * FROM animes";
-        //stmt es statement
-        $stmt = $_conexion -> prepare($sql);
-        $stmt -> execute();
+        if (isset($_GET["nombre_estudio"])){
+            $sql = "SELECT * FROM animes WHERE nombre_estudio = :nombre_estudio";
+            $stmt = $_conexion -> prepare($sql);
+            $stmt -> execute([
+                "nombre_estudio" => $_GET["nombre_estudio"]
+            ]); 
+        } else{
+            $sql = "SELECT * FROM animes";
+            //stmt es statement
+            $stmt = $_conexion -> prepare($sql);
+            $stmt -> execute();
+        }
         $resultado = $stmt -> fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($resultado);
+        echo json_encode($resultado); 
     }
     function manejarPost($_conexion, $entrada) {
         /* echo json_encode(["metodo" => "post"]); */
