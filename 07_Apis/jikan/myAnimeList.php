@@ -19,24 +19,29 @@
     </form>
     <?php 
         
-        if(isset($_GET["type"])) {
-            $tipo = $_GET["type"];
+        print_r($_GET["page"]);
 
-        } elseif(!isset($_GET["type"])) {
-            $tipo = "";
+        if(isset($_GET["type"])) $tipo = $_GET["type"];
+        elseif(!isset($_GET["type"])) $tipo = "";
 
+        if(isset($_GET["page"])) $pagina = $_GET["page"];
+        elseif(!isset($_GET["page"])) $pagina = "";
+        
+
+        if(isset($tipo)){
+            if($tipo == "") $url = "https://api.jikan.moe/v4/top/anime?";
+            else  $url = "https://api.jikan.moe/v4/top/anime?type=$tipo"; 
         }
-        /*Esto es para la paginación pero no funciona*/
-        if(isset($_GET["page"])){
-            if($_GET["page"] == "Siguente >"){
-                $page = 0;
-            }else if($_GET["page"] == "Anterior <"){
-                $page = $page -1;
+
+        /*Casi lo tengo pero no entiendo porque no me añade suma una página cuando es a partir de 1*/
+        if(isset($pagina)){
+            if($pagina == "0"){
+                $pagina -= 1;
+                if($pagina == -1) $pagina = "";
             }
+            elseif($pagina == "1") $pagina += 1;
+            $url = "https://api.jikan.moe/v4/top/anime?page=$pagina";
         }
-
-        if(isset($tipo)) $url = "https://api.jikan.moe/v4/top/anime?type=$tipo";
-        elseif(isset($page)) $url = "https://api.jikan.moe/v4/top/anime?page=$page";
             
         //Iniciamos el curl
         $curl = curl_init();
@@ -75,13 +80,13 @@
     <form action="" method="GET">
             <!--He intentado hacer la paginación pero yendo a contrarreloj no he podido xd-->
         <?php 
-            if(isset($page)){
-                if($page > 1 && $page != ""){ 
-                   echo  "<input type='submit' name='page' value='Anterior <'>";
+            if(isset($_GET["page"])){
+                if((int)$_GET["page"] > 0){ 
+                   echo  "<button  name='page' value='0'>Anterior < </button>";
                 }
-            }
-        ?>
-        <input type="submit" name="page" value ="Siguiente >">
+                
+            } ?>
+           <button name="page" value ="1">Siguiente ></button>
     </form>
     
 </body>
