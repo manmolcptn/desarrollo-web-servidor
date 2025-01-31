@@ -32,7 +32,7 @@
     <form action="" method="get">
         <select name="razas" id="">
             <?php foreach($dogs as $dog => $breeds){ ?>
-                <option value="<?php echo $dog ?>"><?php echo ucwords($dog) ?></option>
+                <option value="<?php echo $dog ?>"> <?php echo ucwords($dog) ?> </option>
                 <?php foreach($breeds as $subBreed){?>
                     <option value="<?php echo $dog . "/" . $subBreed; ?>"><?php echo ucwords($dog) . " " . ucwords($subBreed) ?></option>
                     <?php } ?>
@@ -64,7 +64,10 @@
     ?>
     <h1>Perrito Random</h1>
         <div>
-            <img style="max-width: 500px;" src="<?php echo $message?>" alt="">
+            <?php 
+            if(!is_array($message)){
+                echo "<img style='max-width: 500px;' src='$message' alt=''>";
+            }?> 
         </div>
     </div>
 </body>
