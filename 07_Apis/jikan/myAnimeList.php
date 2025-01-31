@@ -19,7 +19,7 @@
     </form>
     <?php 
         
-        print_r($_GET["page"]);
+        /* print_r($_GET["page"]); */
 
         if(isset($_GET["type"])) $tipo = $_GET["type"];
         elseif(!isset($_GET["type"])) $tipo = "";
@@ -27,11 +27,9 @@
         if(isset($_GET["page"])) $pagina = $_GET["page"];
         elseif(!isset($_GET["page"])) $pagina = "";
         
-
-        if(isset($tipo)){
-            if($tipo == "") $url = "https://api.jikan.moe/v4/top/anime?";
-            else  $url = "https://api.jikan.moe/v4/top/anime?type=$tipo"; 
-        }
+        if($tipo == "") $url = "https://api.jikan.moe/v4/top/anime?";
+        else  $url = "https://api.jikan.moe/v4/top/anime?type=$tipo"; 
+        
 
         /*Casi lo tengo pero no entiendo porque no me añade suma una página cuando es a partir de 1*/
         if(isset($pagina)){
@@ -39,7 +37,7 @@
                 $pagina -= 1;
                 if($pagina == -1) $pagina = "";
             }
-            elseif($pagina == "1") $pagina += 1;
+            elseif($pagina > 1 ) $pagina += 1;
             $url = "https://api.jikan.moe/v4/top/anime?page=$pagina";
         }
             
