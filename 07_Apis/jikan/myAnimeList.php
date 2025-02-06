@@ -18,16 +18,14 @@
         <input type="submit" value="Enviar">
     </form>
     <?php 
-        
-        if($_SERVER["REQUEST_METHOD"] == "GET"){
-
             if(isset($_GET["type"])) $tipo = $_GET["type"];
             else $tipo = "";
             
             if(isset($_GET["page"])) $page = $_GET["page"];
             else $page = 1;
-
+            
             $url = "https://api.jikan.moe/v4/top/anime?page=$page&type=$tipo";
+
                 
             //Iniciamos el curl
             $curl = curl_init();
@@ -42,7 +40,7 @@
 
             $datos = json_decode($respuesta, true);
             $animes = $datos["data"];
-        }
+        
     ?>
     <table>
         <thead>
@@ -63,26 +61,12 @@
         <?php } ?>
         </tbody>
     </table>
-    <form action="" method="GET">
-<<<<<<< HEAD
+    
         <?php 
             $siguiente = $page + 1;
             $anterior = $page - 1;
         ?>
-            <a class='btn btn-primary' href="myAnimeList.php?page=<?php $siguiente?>&type<?php $tipo?>">Siguiente</a>
-
-=======
-            <!--He intentado hacer la paginación pero yendo a contrarreloj no he podido xd-->
-        <?php 
-            if(isset($_GET["page"])){
-                if((int)$_GET["page"] > 0){ 
-                   echo  "<button  name='page' value='0'>Anterior < </button>";
-                }
-                
-            } ?>
-           <button name="page" value ="1">Siguiente ></button>
->>>>>>> 1ef4cc11471b260a017c95407c36f5c1ea156921
-    </form>
+        <a class='btn btn-primary' href="myAnimeList.php?page=<?php echo $siguiente?>&type=<?php echo $tipo?>">Siguiente</a>
     
 </body>
 </html>
