@@ -64,12 +64,24 @@
         </tbody>
     </table>
     <form action="" method="GET">
+<<<<<<< HEAD
         <?php 
             $siguiente = $page + 1;
             $anterior = $page - 1;
         ?>
             <a class='btn btn-primary' href="myAnimeList.php?page=<?php $siguiente?>&type<?php $tipo?>">Siguiente</a>
 
+=======
+            <!--He intentado hacer la paginación pero yendo a contrarreloj no he podido xd-->
+        <?php 
+            if(isset($_GET["page"])){
+                if((int)$_GET["page"] > 0){ 
+                   echo  "<button  name='page' value='0'>Anterior < </button>";
+                }
+                
+            } ?>
+           <button name="page" value ="1">Siguiente ></button>
+>>>>>>> 1ef4cc11471b260a017c95407c36f5c1ea156921
     </form>
     
 </body>
