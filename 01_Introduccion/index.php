@@ -20,7 +20,6 @@
     //var_dump es como un echo pero mucho mas detallado 
     var_dump($var); 
     
-    
     $var = 3;
     var_dump($var);
 

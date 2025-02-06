@@ -30,6 +30,25 @@
     </form>
 
     <?php
+<<<<<<< HEAD
+    //Si el método es post hacemos los siguiente
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        //guardamos en número lo que hay en el array de post 
+        //con la clave número
+        $numero = $_POST["numero"];
+        //Escogemos candidato
+        $candidato = $numeros[0];
+
+        for($i = 0; $i < count($numeros); $i++){
+            if ($numeros[$i] > $candidato) $candidato = $numeros[$i];
+        }
+        $maximo = $candidato;
+
+        if ($numero == $maximo){
+            echo "<h1>Has acertado!!El máximo es $maximo </h1>";
+        } else{
+            echo "<h1>Fallaste el número!!!El máximo es $maximo </h1>";
+=======
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $numero = $_POST["numero"];
         $candidato = $numeros[0];
@@ -43,6 +62,7 @@
             echo "<h1>¡Has acertado! El máximo es $numero</h1>";
         } else {
             echo "<h1>¡Fallaste! El máximo es $maximo</h1>";
+>>>>>>> master
         }
     }
     ?>
