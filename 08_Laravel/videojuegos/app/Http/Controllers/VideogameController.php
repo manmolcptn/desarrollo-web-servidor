@@ -3,24 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Consola;
+use App\Models\Videojuego;
 
-class ConsoleController extends Controller
+
+class VideogameController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        /*$consolas = [
-            "PS4",
-            "PS5",
-            "Nintendo Switch"
+        /*$videojuegos = [
+            ["Hollow Knight", "PEGI 18", "Aventuras"],
+            ["Elden Ring", "PEGI 18", "Souls"],
+            ["The Legend of Zelda", "PEGI 7", "Aventuras"]
         ];*/
-
-        $consolas = Consola::all();//Es como un select que hace toda la lógica como un fetch en php
-
-        return view('consolas/index', ["consolas" => $consolas]);
+        $videojuegos = Videojuego::all();
+        return view('videojuegos/index',  ["videojuegos" => $videojuegos]);
     }
 
     /**
